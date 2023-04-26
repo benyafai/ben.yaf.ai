@@ -1,0 +1,4 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule (webfinger) http://fedi.yaf.ai/.well-known/$1 [R=301,L]
+</IfModule>

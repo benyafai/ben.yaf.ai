@@ -1,0 +1,30 @@
+version: '2.2'
+
+services:
+  benyafai:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+    restart: always
+    volumes:
+      - .:/var/www/html
+    environment:
+      STATUS_API_KEY: ${STATUS_API_KEY}
+    networks:
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.yafai.rule=(Host(`ben.yafai.xyz`) || Host(`yafai.xyz`) || Host(`yaf.ai`) || Host(`ben.yaf.ai`) || Host(`ben.omg.lol`) || Host(`openpgpkey.yaf.ai`))"
+      - "traefik.http.routers.yafai.entrypoints=websecure"
+      - "traefik.http.routers.yafai.tls.certresolver=myresolver"
+      # - "traefik.http.routers.yafai.middlewares=secure-headers@file"
+      - "traefik.http.routers.yafai.middlewares=compression@file"
+      - "traefik.http.routers.yafai-http.entrypoints=web"
+      - "traefik.http.routers.yafai-http.rule=(Host(`ben.yafai.xyz`) || Host(`yafai.xyz`) || Host(`yaf.ai`) || Host(`ben.yaf.ai`) || Host(`ben.omg.lol`) || Host(`openpgpkey.yaf.ai`))"
+      - "traefik.http.routers.yafai-http.middlewares=httpsredirect@file"
+      - "traefik.http.routers.yafai-hns.rule=(Host(`yafai`) || Host(`ben.yafai`))"
+      - "traefik.http.routers.yafai-hns.entrypoints=web"
+
+networks:
+  web:
+    external: true

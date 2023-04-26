@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/yafai
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://ben.yaf.ai
+  * I am yafai (https://keybase.io/yafai) on keybase.
+  * I have a public key ASDmnayMabUmlATjnJiZTC9TX-rP-9zMKJ4IwB9Ex8YgfQo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120e69dac8c69b5269404e39c98994c2f535feacffbdccc289e08c01f44c7c6207d0a",
+      "host": "keybase.io",
+      "kid": "0120e69dac8c69b5269404e39c98994c2f535feacffbdccc289e08c01f44c7c6207d0a",
+      "uid": "d14037da5d541840c5f76babbb409919",
+      "username": "yafai"
+    },
+    "merkle_root": {
+      "ctime": 1565611242,
+      "hash": "4bc018d537a3c69395aaa02d4a3e531e0d602f21174d1b0066ea956abc8d116539ef676f9e291585d4265ec366e86386ed946a1a8fed19cfa2aa2d10a011aa50",
+      "hash_meta": "54071cd1c2bea41f9af71a7f24837467c99703a7f6a153ae770a87e6e2dc9fa2",
+      "seqno": 5993797
+    },
+    "service": {
+      "entropy": "OcRGPK6MROxq/1pdtaaR8+8z",
+      "hostname": "ben.yaf.ai",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "4.2.0"
+  },
+  "ctime": 1565611250,
+  "expire_in": 504576000,
+  "prev": "ee30dbf63bc5e36de3405fc3ab841718b0d9eff1a6d2cc7588004bdc8d8716ef",
+  "seqno": 101,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEg5p2sjGm1JpQE45yYmUwvU1/qz/vczCieCMAfRMfGIH0Kp3BheWxvYWTESpcCZcQg7jDb9jvF423jQF/Dq4QXGLDZ7/Gm0sx1iABL3I2HFu/EIMA1wEeT/jKnnDR3iDayuokThOn2RfR9N8YaDwm3oXwmAgHCo3NpZ8RAyI+NK2HOiw8czH+75H2oR3e7i804IxLTXeSehSPc6ceydzeCnuoMqoSb/dCtH1/VzuqdibK2TUnn+o9dixzGBqhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIIlN+uZmxbbBmgvLP8JjGYXYU7Jp8XqHvy7V6AwMGOLpo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/yafai
+
+==================================================================

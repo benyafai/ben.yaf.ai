@@ -1,0 +1,176 @@
+@import url('https://stuff.yaf.ai/webbystuff/type/firacode.css');
+@import url('https://stuff.yaf.ai/webbystuff/type/RubikMonoOne.css');
+
+:root {
+    --ratio: calc(1rem + 0.3vw);
+    font-size: var(--ratio);
+}
+
+* {
+    color: var(--fg);
+    box-sizing: border-box;
+    line-height: 1.4;
+}
+
+body {
+	background: var(--bg);
+    font-family: 'Fira Code', Courier, serif;
+}
+
+main {
+    max-inline-size: clamp(10vw, 45ch, 80vw);
+    margin: auto;
+    padding-block: 2rem;
+    animation: fade-in 750ms ease-in-out 1;
+}
+
+main * + * {
+    margin-block: 0.6em;
+}
+
+a {
+    text-decoration: none;
+}
+::selection {
+    color: var(--bg);
+    background: var(--fg);
+}
+h1, h2, h3, h4 {
+    font-family: 'Rubik Mono One';
+    font-weight: 400;
+}
+
+hr,
+a:link,
+a:visited {
+	border-block-start: none;
+	border-block-end: 2px dashed var(--fg);
+}
+
+a:hover,
+a:active {
+	border-block-end-style: solid;
+}
+
+svg {
+    width: 1em;
+    height: 1em;
+    margin-inline-end: 0.5em;
+    margin-block-end: -0.2em;
+    fill: var(--ac);
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+svg#avatar {
+    width: calc(var(--ratio) / 0.15);
+    height: auto;
+}
+.avatar {
+    flex-basis: 15ch;
+    flex-grow: 1;
+}
+header .head {
+    flex-basis: 20ch;
+    flex-grow: 999;
+    margin-block: 0.6em;
+}
+header .head h1 {
+    margin-block: 0;
+}
+
+li {
+    list-style-type: none;
+    margin-inline-start: -2ch;
+}
+
+#status {
+    margin-block-start: 2rem;
+    border-block: 2px dashed var(--fg);
+}
+
+img.emoji {
+    width: auto;
+    height: 1rem;
+    margin-block: 0;
+    position: relative;
+    inset-block-end: -0.1em;
+}
+
+#status .favourites::before {
+    content: "Favourites";
+    margin-block-end: 0.2em;
+    display: block;
+    font-weight: 600;
+}
+#status .favourites a {
+    border: none;
+}
+
+#status .favourites img {
+    width: auto;
+    height: 2rem;
+    border-radius: 1rem;
+    margin-block: 0;
+    margin-inline-end: 0.5rem;
+    position: relative;
+    inset-block-end: -0.1em;
+}
+
+
+/********** Range Input Styles **********/
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 10rem;
+    transform: rotate(-7deg);
+}
+input[type="range"]:focus {
+    outline: none;
+}
+
+
+/* slider track */
+input[type="range"]::-webkit-slider-runnable-track {
+    background-color: var(--ac);
+    border-radius: 0.5rem;
+    height: 0.5rem;
+}
+input[type="range"]::-moz-range-track {
+    background-color: var(--ac);
+    border-radius: 0.5rem;
+    height: 0.5rem;
+}
+
+
+/***** Chrome, Safari, Opera and Edge Chromium styles *****/
+/* slider thumb */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    background-color: var(--fg);
+    height: 0.9rem;
+    width: 2rem;
+    border-radius: 1rem;
+    border: 0.2rem solid var(--ac);
+    margin-top: -0.2rem; /* Centers thumb on the track */
+}
+
+/******** Firefox styles ********/
+/* slider thumb */
+input[type="range"]::-moz-range-thumb {
+    background-color: var(--fg);
+    height: 0.5rem;
+    width: 1.8rem;
+    border-radius: 1em;
+    border: 0.2rem solid var(--ac);
+}
+#colorWay + label {
+    color: var(--fg);
+    font-size: 0;
+}
