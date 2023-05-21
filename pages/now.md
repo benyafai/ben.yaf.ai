@@ -2,8 +2,13 @@
 
 {mastoStatus}
 
+## {book}Reading
+
+- [James Acaster's Guide to Quitting Social Media](https://www.jamesacaster.com/james-acasters-guide-to-quitting-social-media/)
+
 ## {music}Listening
 
+- ELIZA - [Straight Talker](https://song.link/gb/i/1619108741)
 - Devin Townsend Project - [Deadhead (Live)](https://song.link/gb/i/1045920535)
 - Sébastien Tellier - [La Ritournelle](https://song.link/i/628734516)
 - Nuyorican Soul - [It's Alright, I Feel It](https://song.link/gb/i/1442502461)
@@ -24,7 +29,7 @@
 
 ## {helicopter}Enjoying
 
-- I've been flying my DJI FPV drone for a short while now, trying to get better at the acrobatics but it's quite difficult! I try to post my stuff here [@circle@fpv.social](https://fpv.social/@circle).
+- I'm three drones into the FPV hobby. I try to post my stuff here [@circle@fpv.social](https://fpv.social/@circle).
 
 ## {ring}Also
 
