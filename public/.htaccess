@@ -1,5 +1,5 @@
 <IfModule mod_headers.c>
- Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self'; img-src * data:; style-src 'self' 'unsafe-inline' https://stuff.yaf.ai; font-src 'self' https://stuff.yaf.ai; base-uri 'self';"
+ Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://who.tunnel.li; connect-src 'self' https://who.tunnel.li; img-src * data:; style-src 'self' 'unsafe-inline' https://stuff.yaf.ai; font-src 'self' https://stuff.yaf.ai; base-uri 'self';"
   Header set Referrer-Policy "no-referrer"
   Header always set X-FRAME-OPTIONS "DENY"
   Header always set X-XSS-Protection "1; mode=block"
