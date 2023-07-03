@@ -4,7 +4,7 @@
 - {matrix}[@ben:yaf.ai](https://matrix.to/#/@ben:yaf.ai)
 - {github}[benyafai](https://github.com/benyafai)
 - {music}[benyafai](https://music.apple.com/profile/benyafai)
-- {discord}[benyafai#9763](discord://benyafai#9763)
+- {discord}[benyafai](discord://benyafai)
 
 ### What's happening
 
