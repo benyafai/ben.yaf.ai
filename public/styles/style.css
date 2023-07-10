@@ -100,17 +100,23 @@ img.emoji {
     inset-block-end: -0.1em;
 }
 
-#status .favourites::before {
-    content: "Favourites";
+#status .interactions::before {
+    content: "Interactions";
     margin-block-end: 0.2em;
     display: block;
     font-weight: 600;
 }
-#status .favourites a {
+#status .interactions.Favourites::before {
+    content: "Favourites";
+}
+#status .interactions.Boosts::before {
+    content: "Boosts";
+}
+#status .interactions a {
     border: none;
 }
 
-#status .favourites img {
+#status .interactions img {
     width: auto;
     height: 2rem;
     border-radius: 1rem;

@@ -60,32 +60,35 @@ class API
      /**
      * Gets the most recent mastodon status, unless an ID is specified
      *
-     * @param bool   $includeFavourites Choose if we should fetch favourites.
-     * @param string $id                The id of the status to fetch
+     * @param bool   $includeInteractions Choose if we should fetch favourites.
+     * @param string $id                  The id of the status to fetch
      *
      * @return string
      */
-    public function getMastodonStatus(bool $includeFavourites = false, string $id = null, $image = false): string
+    public function getMastodonStatus(bool $includeInteractions = false, string $id = null): string
     {
         $statuses = $this->getData($this->OAUTH->mastodon->uri . '/api/v1/accounts/' . $this->OAUTH->mastodon->myaccount . '/statuses');
         foreach ($statuses as $status) {
             if (!$status->in_reply_to_id && $status->content) {
                 $formatted = $this->replaceEmojis($status);
-                if ($includeFavourites) {
-                    $favourites = $this->getData($this->OAUTH->mastodon->uri . '/api/v1/statuses/' . $status->id . '/favourited_by');
-                    $favourites = $this->styleFavourites($favourites);
-                    if (count($favourites) > 0) {
-                        $formatted .= '<div class="favourites">';
-                            $formatted .= implode('', $favourites);
-                        $formatted .= '</div>';
-                    }
-                }
                 foreach ($status->media_attachments as $media_attachment) {
                     if ($media_attachment->type == 'image') {
                         $formatted .= '<div title="' . $media_attachment->description . '"
                             style="background-image:url(' . $media_attachment->url . '); display: inline-block; 
                             width: 100%; aspect-ratio: 16 / 9; background-size: cover; border-radius: 1em 0.2em 1.3em 0.6em;
                             background-position-y: ' . ($media_attachment->meta->focus->y * 55) . '%; "></div>';
+                    }
+                }
+                if ($includeInteractions) {
+                    $favourites = $this->getData($this->OAUTH->mastodon->uri . '/api/v1/statuses/' . $status->id . '/favourited_by');
+                    $favourites = $this->styleFavourites($favourites);
+                    $boosts = $this->getData($this->OAUTH->mastodon->uri . '/api/v1/statuses/' . $status->id . '/reblogged_by');
+                    $boosts = $this->styleBoosts($boosts);
+                    if (count($favourites) > 0 || count($boosts) > 0) {
+                        $formatted .= '<div class="interactions">';
+                        $formatted .= implode('', $favourites);
+                        $formatted .= implode('', $boosts);
+                        $formatted .= '</div>';
                     }
                 }
                 return $formatted;
@@ -111,7 +114,7 @@ class API
         return $formatted;
     }
 
-     /**
+    /**
      * Populates a list of favourites as image icons with links.
      */
     public function styleFavourites($favourites)
@@ -121,6 +124,22 @@ class API
             foreach ($favourites as $favourite) {
                 $icon = '<a href="' . $favourite->url . '" title="Favourited by ' . $favourite->acct . '"><img loading="lazy" alt="' .
                         $favourite->acct . '" height="2rem" width="2rem" src="' . $favourite->avatar . '" /></a>';
+                $formatted[] = $icon;
+            }
+        }
+        return $formatted;
+    }
+
+    /**
+     * Populates a list of boosts as image icons with links.
+     */
+    public function styleBoosts($boosts)
+    {
+        $formatted = [];
+        if (count($boosts) > 0) {
+            foreach ($boosts as $boost) {
+                $icon = '<a href="' . $boost->url . '" title="Boosted by ' . $boost->acct . '"><img loading="lazy" alt="' .
+                        $boost->acct . '" height="2rem" width="2rem" src="' . $boost->avatar . '" /></a>';
                 $formatted[] = $icon;
             }
         }
