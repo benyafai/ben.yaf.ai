@@ -93,6 +93,7 @@ class API
                 }
                 return $formatted;
             }
+        return '';
         }
     }
 
