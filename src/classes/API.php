@@ -93,8 +93,8 @@ class API
                 }
                 return $formatted;
             }
-            return '';
         }
+        return '';
     }
 
      /**
