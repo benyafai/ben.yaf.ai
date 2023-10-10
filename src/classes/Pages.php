@@ -14,6 +14,7 @@ class Pages
 {
     public $Parsedown;
     public $API;
+    public $pageMeta;
      /**
      * Gathers OAUTH data ready to manage requests.
      */
@@ -21,6 +22,7 @@ class Pages
     {
         $this->Parsedown = $Parsedown;
         $this->API = $API;
+        $this->pageMeta = new \StdClass();
     }
 
     /**
@@ -39,10 +41,12 @@ class Pages
 
             if (file_exists($pagePath)) {
                 $markdown = file_get_contents($pagePath);
+                $markdown = $this->parseMetaData($markdown);
                 $markdown = $this->Parsedown->text($markdown);
                 $markdown = $this->myShortCodes($markdown, filemtime($pagePath));
                 return $request->getAttribute("view")->render($response, "markdown.phtml", [
                     "markdown" => $this->Parsedown->text($markdown),
+                    "pageMeta" => $this->pageMeta,
                     "sharelink" => $page == "index" ? false : true,
                 ]);
             }
@@ -125,5 +129,29 @@ class Pages
                 return  $t . ' ' . $str . ( $t > 1 ? 's' : '' ) . ' ago';
             }
         }
+    }
+
+    /**
+     * Parse our metadata
+     *
+     * @param string $markdown The page we are parsing
+     *
+     * @return string
+     */
+    public function parseMetaData($markdown): string
+    {
+        if (substr($markdown, 0, 3) == "---") {
+            $endOfMeta = strpos($markdown, "---", 1);
+            $meta = substr($markdown, 4, $endOfMeta - 5);
+            $meta = explode("\n", $meta);
+            foreach ($meta as $key => $value) {
+                preg_match('/^(\w*):\s?(.*)/', $value, $meta_array);
+                list($fullString, $metaKey, $metaValue) = $meta_array;
+                $this->pageMeta->$metaKey = $metaValue;
+                unset($meta[$key]);
+            }
+            $markdown = substr($markdown, $endOfMeta + 3);
+        }
+        return $markdown;
     }
 }

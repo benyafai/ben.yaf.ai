@@ -27,6 +27,9 @@ main {
 main * + * {
     margin-block: 0.6em;
 }
+div#content h1 + p {
+    margin-block-start: 1.6em;
+}
 
 a {
     text-decoration: none;
