@@ -43,6 +43,7 @@ class Pages
                 $markdown = $this->myShortCodes($markdown, filemtime($pagePath));
                 return $request->getAttribute("view")->render($response, "markdown.phtml", [
                     "markdown" => $this->Parsedown->text($markdown),
+                    "sharelink" => $page == "index" ? false : true,
                 ]);
             }
         }
@@ -61,7 +62,7 @@ class Pages
      */
     public function renderHomePage(object $request, object $response): object
     {
-        return $this->renderPage($request, $response, 'index');
+        return $this->renderPage($request, $response, "index");
     }
 
     /**

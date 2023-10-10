@@ -1,6 +1,6 @@
 ## Talk to me
 
-- {mastodon}[@ben@yaf.ai](https://fedi.yaf.ai/@ben)
+- {mastodon}<a rel="me" href="https://fedi.yaf.ai/@ben">@ben@yaf.ai</a>
 - {matrix}[@ben:yaf.ai](https://matrix.to/#/@ben:yaf.ai)
 - {github}[benyafai](https://github.com/benyafai)
 - {music}[benyafai](https://music.apple.com/profile/benyafai)

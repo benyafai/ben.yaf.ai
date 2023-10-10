@@ -1,1 +1,7 @@
-<?=$markdown?>
+<?php
+
+print($markdown);
+if ($sharelink) {
+    print('<hr />');
+    print('<a href="#" target="mastodon" class="mastodon-share">Share to Mastodon</a>');
+}
