@@ -8,16 +8,14 @@
 
 ## {music}Listening
 
-- ELIZA - [Straight Talker](https://song.link/gb/i/1619108741)
-- Devin Townsend Project - [Deadhead (Live)](https://song.link/gb/i/1045920535)
-- Sébastien Tellier - [La Ritournelle](https://song.link/i/628734516)
-- Nuyorican Soul - [It's Alright, I Feel It](https://song.link/gb/i/1442502461)
-- VOLA - [Freak](https://song.link/gb/i/1600457535)
+- Alan Gogoll - [Delicious Monster](https://song.link/gb/i/1523312894)
+- Kenya Grace - [Strangers](https://song.link/gb/i/1704393613)
+- Kiah Victoria - [Hollow](https://song.link/gb/i/1504773195)
+- Peter and Kerry - [I Don't Know (Acoustic)](https://song.link/gb/i/1707420741)
 
 ## {podcast}Listening
 
 - [The Blindboy Podcast](https://pods.link/gb/i/1300577518)
-- [Adam Buxton Podcast](https://pods.link/gb/i/1040481893)
 - [Off Menu with Ed Gamble and James Acaster](https://pods.link/gb/i/1442950743)
 - [No Such Thing As A Fish](https://pods.link/gb/i/840986946)
 
@@ -29,7 +27,7 @@
 
 ## {helicopter}Enjoying
 
-- I'm three drones into the FPV hobby. I try to post my stuff here [@circle@fpv.social](https://fpv.social/@circle).
+- I'm ~~three~~ four drones into the FPV hobby. I try to post my stuff here [@circle@fpv.social](https://fpv.social/@circle).
 
 ## {ring}Also
 
