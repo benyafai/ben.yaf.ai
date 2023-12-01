@@ -89,12 +89,18 @@ li {
     list-style-type: none;
     margin-inline-start: -2ch;
 }
-
+code {
+    background: var(--code);
+    color: var(--fg);
+    font-size: smaller;
+    padding: 0.3em 1em;
+    display: inline-block;
+    width: max-content;
+}
 #status {
     margin-block-start: 2rem;
     border-block: 2px dashed var(--fg);
 }
-
 img.emoji {
     width: auto;
     height: 1rem;
