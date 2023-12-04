@@ -92,10 +92,11 @@ li {
 code {
     background: var(--code);
     color: var(--fg);
-    font-size: smaller;
     padding: 0.3em 1em;
     display: inline-block;
-    width: max-content;
+    max-width: 90vw;
+    font-size: 1ch;
+    width: fit-content;
 }
 #status {
     margin-block-start: 2rem;
