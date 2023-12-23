@@ -37,8 +37,12 @@ class Pages
     public function renderPage(object $request, object $response, string $page = null): object
     {
         if ($page) {
+            $page = strtolower($page);
             $pagePath = __DIR__ . "/../../pages/$page.md";
-
+            $redirects = require_once(__DIR__ . "/../../pages/.redirects.php");
+            if (isset($redirects->$page)) {
+                $pagePath = __DIR__ . "/../../pages/" . $redirects->$page . ".md";
+            }
             if (file_exists($pagePath)) {
                 $markdown = file_get_contents($pagePath);
                 $markdown = $this->parseMetaData($markdown);
@@ -51,9 +55,7 @@ class Pages
                 ]);
             }
         }
-        return $request->getAttribute("view")->render($response, "404.phtml", [
-            "four0four" => true,
-        ])->withStatus(404);
+        return $request->getAttribute("view")->render($response, "404.phtml")->withStatus(404);
     }
 
     /**

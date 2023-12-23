@@ -1,4 +1,6 @@
-# Subscriptions 2023
+---
+Title: Subscriptions 2023
+---
 
 I've been reading a bunch of people's posts about their subscriptions on Mastodon recently, [Maique](https://maique.eu/2023/12/17/subscriptions-edition.html) and [Robb](https://rknight.me/subscriptions/) to name a couple.
 
