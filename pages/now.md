@@ -1,4 +1,6 @@
-# /Now
+---
+Title: /Now
+---
 
 {mastoStatus}
 
