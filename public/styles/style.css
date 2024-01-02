@@ -43,6 +43,9 @@ h1, h2, h3, h4 {
     font-weight: 400;
 }
 
+hr {
+    margin-block: 1.2em;
+}
 hr,
 a:link,
 a:visited {
