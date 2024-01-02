@@ -63,6 +63,10 @@ svg {
     fill: var(--ac);
 }
 
+img {
+    width: 90%;
+}
+
 header {
     display: flex;
     flex-wrap: wrap;
@@ -90,13 +94,14 @@ li {
     margin-inline-start: -2ch;
 }
 code {
-    background: var(--code);
-    color: var(--fg);
+    background: var(--code-bg);
+    color: var(--code-fg);
     padding: 0.3em 1em;
     display: inline-block;
     max-width: 90vw;
     font-size: 1ch;
     width: fit-content;
+    border-radius: 0.3em
 }
 #status {
     margin-block-start: 2rem;
