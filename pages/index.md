@@ -6,14 +6,14 @@
 - {music}[benyafai](https://music.apple.com/profile/benyafai)
 - {discord}[benyafai](discord://benyafai)
 
-### What's happening
+## What's happening
 
 - {clock}[/Now](/now)
 - {prami}[ben.status.lol](https://ben.status.lol)
 
 {mastoStatus}
 
-### Crypto
+## Crypto
 
 - {ethereum}[ben.yafai.eth](http://ben.yafai.eth/)
 - {handshake}[ben.yafai/](http://ben.yafai/)

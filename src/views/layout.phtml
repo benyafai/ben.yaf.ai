@@ -25,8 +25,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="/styles/fun.css">
-    <link rel="stylesheet" href="/styles/dark.min.css" media="(prefers-color-scheme: dark)">
-    <link rel="stylesheet" href="/styles/default.min.css" media="(prefers-color-scheme: light)">
     <link rel="icon" type="image/x-icon" href="/styles/favicon.ico">
     <style>
         :root {
@@ -55,17 +53,15 @@
     </style>
     <script type="text/javascript" src="/js/colors.js" async></script>
     <script type="text/javascript" src="/js/share.js" async></script>
-    <script type="text/javascript" src="/js/highlight.min.js"></script>
-    <script>hljs.highlightAll();</script>
     <script async src="https://who.tunnel.li/script.js" data-website-id="0bca39b8-5af3-4657-87f3-20e437fbe466"></script>
 </head>
 
 <body>
     <main>
         <header>
-            <div class="avatar">
+            <a class="avatar" href="https://ben.yaf.ai">
                 <?=file_get_contents(__DIR__ . "/../svg/ben.svg")?>
-            </div>
+            </a>
             <div class="head">
                 <?php if ($four0four) : ?>
                     <h1 id="name">Ben Who?</h1>

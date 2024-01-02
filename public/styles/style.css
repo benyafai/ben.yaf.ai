@@ -18,7 +18,7 @@ body {
 }
 
 main {
-    max-inline-size: clamp(10vw, 45ch, 80vw);
+    max-inline-size: clamp(10vw, 65ch, 80vw);
     margin: auto;
     padding-block: 2rem;
     animation: fade-in 750ms ease-in-out 1;
@@ -51,7 +51,15 @@ a:visited {
 }
 
 a:hover,
-a:active {
+a:active,
+a h1:hover,
+a h1:active,
+a h2:hover,
+a h2:active,
+a h3:hover,
+a h3:active,
+a h4:hover,
+a h4:active {
 	border-block-end-style: solid;
 }
 
@@ -79,9 +87,16 @@ svg#avatar {
 .avatar {
     flex-basis: 15ch;
     flex-grow: 1;
+    border: none;
+}
+.avatar:link, 
+.avatar:hover,
+.avatar:active,
+.avatar:visited {
+    border: none;
 }
 header .head {
-    flex-basis: 20ch;
+    flex-basis: 40ch;
     flex-grow: 999;
     margin-block: 0.6em;
 }
@@ -91,7 +106,7 @@ header .head h1 {
 
 li {
     list-style-type: none;
-    margin-inline-start: -2ch;
+    margin-inline-start: -3ch;
 }
 code {
     background: var(--code-bg);
