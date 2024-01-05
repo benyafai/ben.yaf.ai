@@ -14,15 +14,16 @@ class Pages
 {
     public $Parsedown;
     public $API;
-    public $pageMeta;
+    public $siteMeta;
+    public array $allPosts;
      /**
-     * Gathers OAUTH data ready to manage requests.
+     * Constructor
      */
     public function __construct(Parsedown $Parsedown, API $API)
     {
         $this->Parsedown = $Parsedown;
         $this->API = $API;
-        $this->pageMeta = new \StdClass();
+        $this->siteMeta = include_once(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "config.php");
     }
 
     /**
@@ -44,13 +45,15 @@ class Pages
                 $pagePath = __DIR__ . "/../../pages/" . $redirects->$page . ".md";
             }
             if (file_exists($pagePath)) {
-                $markdown = file_get_contents($pagePath);
-                $markdown = $this->parseMetaData($markdown);
-                $markdown = $this->Parsedown->text($markdown);
+                $post = file_get_contents($pagePath);
+                $post = $this->parseMetaData($post);
+                $markdown = $this->Parsedown->text($post->markdown);
+                $markdown = str_replace("href=\"/", "href=\"https://" . $_SERVER["HTTP_HOST"] . "/", $markdown);
                 $markdown = $this->myShortCodes($markdown, filemtime($pagePath));
                 return $request->getAttribute("view")->render($response, "markdown.phtml", [
                     "markdown" => $this->Parsedown->text($markdown),
-                    "pageMeta" => $this->pageMeta,
+                    "postMeta" => $post->postMeta,
+                    "siteMeta" => $this->siteMeta,
                     "sharelink" => $page == "index" ? false : true,
                 ]);
             }
@@ -59,16 +62,42 @@ class Pages
     }
 
     /**
-     * Render our homepage markdown file into a page.
-     *
-     * @param object $request  The request.
-     * @param object $response The response.
-     *
-     * @return object
+     * Parse our posts
      */
-    public function renderHomePage(object $request, object $response): object
+    public function parsePosts($furtherPath = null)
     {
-        return $this->renderPage($request, $response, "index");
+        $path = __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "pages";
+        if (!is_null($furtherPath)) {
+            $path .= DIRECTORY_SEPARATOR . $furtherPath;
+        }
+        $files = array_diff(scandir($path), array('.', '..', '.redirects.php', 'index.md', 'now.md'));
+        foreach ($files as $file) {
+            if (!is_dir($path . DIRECTORY_SEPARATOR . $file)) {
+                $post = file_get_contents($path . DIRECTORY_SEPARATOR . $file);
+                $post = $this->parseMetaData($post);
+                if (isset($post->postMeta->Draft) && $post->postMeta->Draft == "true") {
+                    continue;
+                } else {
+                    $modified = isset($post->postMeta->Date) ? strtotime($post->postMeta->Date) : filemtime($path . DIRECTORY_SEPARATOR . $file);
+                    $markdown = $this->Parsedown->text($post->markdown);
+                    $markdown = str_replace("href=\"/", "href=\"https://" . $_SERVER["HTTP_HOST"] . "/", $markdown);
+                    $markdown = $this->myShortCodes($markdown, filemtime($path . DIRECTORY_SEPARATOR . $file));
+                    $this->allPosts[$modified] = (object) [
+                        "file" => ( !is_null($furtherPath) ? $furtherPath . DIRECTORY_SEPARATOR : null ) . str_replace(".md", "", $file),
+                        "date" => $modified,
+                        "path" => $path . DIRECTORY_SEPARATOR . $file,
+                        "postMeta" => $post->postMeta,
+                        "markdown" => $markdown,
+                    ];
+                }
+            } else {
+                // echo ($path . DIRECTORY_SEPARATOR . $file);
+                $this->parsePosts($file);
+            }
+        }
+        // ksort($posts);
+
+        // return (object) $posts;
     }
 
     /**
@@ -105,6 +134,73 @@ class Pages
     }
 
     /**
+     * Parse our metadata
+     *
+     * @param string $markdown The page we are parsing
+     *
+     * @return object
+     */
+    public function parseMetaData($markdown): object
+    {
+        if (substr($markdown, 0, 3) == "---") {
+            $endOfMeta = strpos($markdown, "---", 1);
+            $meta = substr($markdown, 4, $endOfMeta - 5);
+            $meta = explode("\n", $meta);
+            $postMeta = new \stdClass();
+            foreach ($meta as $key => $value) {
+                preg_match('/^(\w*):\s?(.*)/', $value, $meta_array);
+                list($fullString, $metaKey, $metaValue) = $meta_array;
+                $postMeta->$metaKey = $metaValue;
+                unset($meta[$key]);
+            }
+            $markdown = substr($markdown, $endOfMeta + 3);
+        }
+        return (object) [
+            "markdown" => $markdown,
+            "postMeta" => $postMeta,
+        ];
+    }
+
+    /**
+     * Return our page list as an RSS feed.
+     *
+     * @param object $request  The request.
+     * @param object $response The response.
+     *
+     * @return object
+     */
+    public function rss(object $request, object $response): object
+    {
+        $rss = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<rss version=\"2.0\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xml:base=\"https://"
+            . $_SERVER["HTTP_HOST"] . "\" xmlns:atom=\"http://www.w3.org/2005/Atom\">
+    <channel> 
+        <title>" . $this->siteMeta->siteTitle  . "</title>
+        <link>https://" . $_SERVER["HTTP_HOST"] . "</link>
+        <atom:link href=\"https://" . $_SERVER["HTTP_HOST"] . "/rss\" rel=\"self\" type=\"application/rss+xml\"/>
+        <description>" . $this->siteMeta->siteDescription . "</description>
+        <language>en-gb</language>";
+        $this->parsePosts();
+        krsort($this->allPosts);
+        foreach ($this->allPosts as $post) {
+            $rss .= "
+        <item>
+            <title>" . $post->postMeta->Title . "</title>
+            <pubDate>" . date("r", $post->date) . "</pubDate>
+            <link>https://" . $_SERVER["HTTP_HOST"] . "/" . $post->file . "</link>
+            <description>" . str_replace("<", "&lt;", str_replace(">", "&gt;", $post->markdown)) . "</description>
+            <dc:creator>" . $this->siteMeta->siteAuthor . "</dc:creator>
+            <guid>https://" . $_SERVER["HTTP_HOST"] . "/" . $post->file . "</guid>
+        </item>";
+        }
+        $rss .= "
+    </channel>
+</rss>";
+        $response->getBody()->write($rss);
+        return $response->withHeader("Content-Type", "application/xml");
+    }
+
+    /**
      * Convert a timestamp to a 'time ago'
      *
      * @param string $timestamp How long ago was this $timestamp.
@@ -134,26 +230,15 @@ class Pages
     }
 
     /**
-     * Parse our metadata
+     * Render our homepage markdown file into a page.
      *
-     * @param string $markdown The page we are parsing
+     * @param object $request  The request.
+     * @param object $response The response.
      *
-     * @return string
+     * @return object
      */
-    public function parseMetaData($markdown): string
+    public function renderHomePage(object $request, object $response): object
     {
-        if (substr($markdown, 0, 3) == "---") {
-            $endOfMeta = strpos($markdown, "---", 1);
-            $meta = substr($markdown, 4, $endOfMeta - 5);
-            $meta = explode("\n", $meta);
-            foreach ($meta as $key => $value) {
-                preg_match('/^(\w*):\s?(.*)/', $value, $meta_array);
-                list($fullString, $metaKey, $metaValue) = $meta_array;
-                $this->pageMeta->$metaKey = $metaValue;
-                unset($meta[$key]);
-            }
-            $markdown = substr($markdown, $endOfMeta + 3);
-        }
-        return $markdown;
+        return $this->renderPage($request, $response, "index");
     }
 }

@@ -27,6 +27,8 @@ $app->get("/test", function (Request $request, Response $response) {
 
 $app->post("/statuslol", [Yafai\API::class, "statuslol"]);
 
+$app->get("/rss", [Yafai\Pages::class, "rss"]);
+
 $app->get("/{page:.{1,}}", [Yafai\Pages::class, "renderPage"]);
 
 $app->get("/", [Yafai\Pages::class, "renderHomePage"]);
