@@ -1,5 +1,6 @@
 ---
 Title: Subscriptions 2023
+Date: 2023-12-23 22:39:00
 ---
 
 I've been reading a bunch of people's posts about their subscriptions on Mastodon recently, [Maique](https://maique.eu/2023/12/17/subscriptions-edition.html) and [Robb](https://rknight.me/subscriptions/) to name a couple.

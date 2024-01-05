@@ -1,5 +1,6 @@
 ---
 Title: App Defaults
+Date: 2024-01-02 14:02:00
 ---
 
 I'm hopping on the trend of letting people know my [App Defaults](https://defaults.rknight.me/).
