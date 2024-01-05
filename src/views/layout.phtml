@@ -4,22 +4,22 @@
 <head>
     <meta charset="utf-8">
     <!-- HTML Meta Tags -->
-    <title><?=$pageMeta->Title ?? "Ben Yafai"?></title>
-    <meta name="description" content="Links to my social profiles and other stuff">
+    <title><?=(isset($postMeta->Title) ? $postMeta->Title . " | " : null ) . $siteMeta->siteTitle?></title>
+    <meta name="description" content="<?=$postMeta->Description ?? $siteMeta->siteDescription?>">
     
     <!-- Facebook Meta Tags -->
     <meta property="og:url" content="https://ben.yaf.ai">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Ben Yafai">
-    <meta property="og:description" content="Links to my social profiles and other stuff">
+    <meta property="og:title" content="<?=(isset($postMeta->Title) ? $postMeta->Title . " | " : null ) . $siteMeta->siteTitle?>">
+    <meta property="og:description" content="<?=$postMeta->Description ?? $siteMeta->siteDescription?>">
     <meta property="og:image" content="https://ben.yaf.ai/styles/og-header.png">
     
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta property="twitter:domain" content="ben.yaf.ai">
     <meta property="twitter:url" content="https://ben.yaf.ai">
-    <meta name="twitter:title" content="Ben Yafai">
-    <meta name="twitter:description" content="Links to my social profiles and other stuff">
+    <meta name="twitter:title" content="<?=(isset($postMeta->Title) ? $postMeta->Title . " | " : null ) . $siteMeta->siteTitle?>">
+    <meta name="twitter:description" content="<?=$postMeta->Description ?? $siteMeta->siteDescription?>">
     <meta name="twitter:image" content="https://ben.yaf.ai/styles/og-header.png">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

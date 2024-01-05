@@ -1,10 +1,10 @@
 <?php
 
-if (!empty($pageMeta->Title)) {
-    echo "<h1>$pageMeta->Title</h1>";
+if (!empty($postMeta->Title)) {
+    echo "<h1>$postMeta->Title</h1>";
 }
-if (!empty($pageMeta->Date)) {
-    echo "<p>" . date("jS F Y", strtotime($pageMeta->Date)) . "</p>";
+if (!empty($postMeta->Date)) {
+    echo "<p>" . date("jS F Y", strtotime($postMeta->Date)) . "</p>";
 }
 print($markdown);
 if ($sharelink) {
