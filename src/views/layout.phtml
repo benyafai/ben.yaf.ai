@@ -83,6 +83,11 @@
         <div id="content">
             <?=$content?>
         </div>
+        <hr />
+        <footer>
+            <p><?=file_get_contents(__DIR__ . "/../svg/mastodon.svg")?><a href="#" target="mastodon" class="mastodon-share">Share to Mastodon</a></p>
+            <p><?=file_get_contents(__DIR__ . "/../svg/rss.svg")?><a href="https://ben.yaf.ai/feed.xml">RSS, but infrequent</a></p>
+        </footer>
     </main>
 </body>
 </html>
