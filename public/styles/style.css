@@ -78,6 +78,10 @@ img {
     width: 90%;
 }
 
+em {
+    color: var(--ac);
+}
+
 header {
     display: flex;
     flex-wrap: wrap;

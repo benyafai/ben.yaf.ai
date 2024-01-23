@@ -123,7 +123,7 @@ class Pages
                 $this->parsePosts();
                 krsort($this->allPosts);
                 foreach ($this->allPosts as $post) {
-                    $recentPosts .= $this->Parsedown->text('_' . date("d M Y", $post->date) . '_ | ' .
+                    $recentPosts .= $this->Parsedown->text('_' . date("d M Y", $post->date) . ' •_ ' .
                     '[' . $post->postMeta->Title . '](https://' . $_SERVER['HTTP_HOST'] . '/' . $post->file
                     . ')');
                 }
