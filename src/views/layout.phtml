@@ -85,8 +85,8 @@
         </div>
         <hr />
         <footer>
-            <p><?=file_get_contents(__DIR__ . "/../svg/mastodon.svg")?><a href="#" target="mastodon" class="mastodon-share">Share to Mastodon</a></p>
-            <p><?=file_get_contents(__DIR__ . "/../svg/rss.svg")?><a href="https://ben.yaf.ai/feed.xml">RSS, but infrequent</a></p>
+            <p><?=file_get_contents(__DIR__ . "/../svg/mastodon.svg")?><a href="#" target="mastodon" class="mastodon-share" onclick="umami.track('share-to-mastodon');">Share to Mastodon</a></p>
+            <p><?=file_get_contents(__DIR__ . "/../svg/rss.svg")?><a href="https://ben.yaf.ai/feed.xml" onclick="umami.track('click-rss');">RSS, but infrequent</a></p>
         </footer>
     </main>
 </body>
