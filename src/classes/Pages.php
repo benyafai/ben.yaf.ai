@@ -118,6 +118,17 @@ class Pages
                 $mastoStatus .= '</div>';
                 $markdown = str_replace('{' . $match . '}', $mastoStatus, $markdown);
             }
+            if ($match == 'recentPosts') {
+                $recentPosts = '';
+                $this->parsePosts();
+                krsort($this->allPosts);
+                foreach ($this->allPosts as $post) {
+                    $recentPosts .= $this->Parsedown->text('_' . date("d M Y", $post->date) . '_ | ' .
+                    '[' . $post->postMeta->Title . '](https://' . $_SERVER['HTTP_HOST'] . '/' . $post->file
+                    . ')');
+                }
+                $markdown = str_replace('{' . $match . '}', $recentPosts, $markdown);
+            }
             if ($match == 'lastUpdated') {
                 $lastUpdated = '/Now was more like <span title="';
                 $lastUpdated .= date("Y-m-d H:i:s", $modified);

@@ -1,3 +1,14 @@
+## What's happening
+
+- {clock}[/Now](/now)
+- {prami}[ben.status.lol](https://ben.status.lol)
+
+{mastoStatus}
+
+## Recent posts
+
+{recentPosts}
+
 ## Talk to me
 
 - {mastodon}<a rel="me" href="https://fedi.yaf.ai/@ben">@ben@yaf.ai</a>
@@ -5,13 +16,6 @@
 - {github}[benyafai](https://github.com/benyafai)
 - {music}[benyafai](https://music.apple.com/profile/benyafai)
 - {discord}[benyafai](discord://benyafai)
-
-## What's happening
-
-- {clock}[/Now](/now)
-- {prami}[ben.status.lol](https://ben.status.lol)
-
-{mastoStatus}
 
 ## Crypto
 
