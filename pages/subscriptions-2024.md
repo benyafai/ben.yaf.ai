@@ -141,7 +141,7 @@ This year, I actually moved all my DNS to Bunny too, as nice a system as DNSimpl
 
 ~~**[dnsimple](https://dnsimple.com/r/5207b788e976d5)** (£4.30 per month)~~
 
-**Ionos** (£0 per month)
+**Ionos** ~~(£21 per month)~~
 
 I have a single domain with Ionos now, but the hosting is gone at last!
 
