@@ -56,14 +56,14 @@ This is for me. I play the games daily, it's going nowhere.
 
 I like it, not the biggest library but generally all good quality.
 
-**Netflix** (£23 per month)
+**Netflix Premium** (£23 per month)
 
 How much?! I pay for the 4K, and my extended family took advantage of the extra profiles, but after the recent clampdown I was all but certain Netflix was going to go.
 We do watch it, but not as often as a few years ago.
 
 However, a family member has thrown some money at me to get the cheaper additional login, so it'll stay for a little bit until that expires, and I'll figure it out then.
 
-**Disney+** (£79.90 per year)
+**Disney+ Premium** (£79.90 per year)
 
 Disney have a wide catalogue that I generally like. Star Wars and Marvel are loved by the kids, and I'm probably watching more TV series here than Netflix currently.
 
